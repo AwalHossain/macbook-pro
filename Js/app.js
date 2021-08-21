@@ -64,15 +64,15 @@ function calculate(){
  return totalPrice.innerText;
 }
 
-
+// passed the calculate function to the totalCost function to hold the total value before submit promo code
 function totalCost(){
 discountPrice.innerText =calculate();
 
 return discountPrice.innerText;
 }
 
-
-const message=    document.getElementById('error')
+//  here, i calculate 20% discount promo code
+const message= document.getElementById('error')
 applyDiscountBtn.addEventListener('click', function(){
     let cost = totalCost();
     console.log(cost);
@@ -80,9 +80,13 @@ applyDiscountBtn.addEventListener('click', function(){
         let deductionCost = cost * 20/100 ;
         discountPrice.innerText = cost - deductionCost;
         console.log(cost);
-        message.textContent = ''
+        message.style.color="green"
+        message.textContent = 'Your promo code successfully added'
+        promocode.value = ''
+        // applyDiscountBtn.disabled=true
     }
     else{
+        message.style.color="red"
 message.textContent= "Coupon code is invalid!!"
     }
 })
