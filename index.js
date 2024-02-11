@@ -11,9 +11,11 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors(
-  
+  {
+    origin: ['http://localhost:8000', 'https://awalhossain.github.io', 'https://awalhossain.tech'],
+    credentials: true
+  }
 ));
-
 
 const contactAddress = "awalhossainofficial@gmail.com"
 
