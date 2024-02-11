@@ -2,8 +2,9 @@ const bodyParser = require("body-parser")
 const express = require("express")
 const nodemailer = require("nodemailer")
 const dotenv = require("dotenv")
-dotenv.config();
+dotenv.config()
 const cors = require('cors');
+const PORT = process.env.PORT || 5000;
 
 
 
@@ -24,13 +25,13 @@ const mailer = nodemailer.createTransport({
   port: 587, // replace with your SMTP port
   secure: false, // true for 465, false for other ports
   auth: {
-    user: process.env.USER, 
+    user: process.env.SENDER, 
     pass: process.env.PASS,
   },
 })
 
 app.post("/contact", function (req, res) {
-  console.log(req.body);
+  console.log(req.body,"checki", process.env.SENDER,"user", process.env.PASS, process.env.CONTACT_EMAIL);
   const { FNAME, EMAIL, SUBJECT, MESSAGE } = req.body;
 
   const emailTemplate = `
@@ -58,4 +59,6 @@ app.post("/contact", function (req, res) {
   )
 })
 
-app.listen(3000)
+app.listen(PORT,()=>{
+  console.log('Server is running on port 5000');
+})
