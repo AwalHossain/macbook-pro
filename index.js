@@ -43,8 +43,8 @@ app.post("/contact", function (req, res) {
   `;
   mailer.sendMail(
     {
-      from: process.env.USER,
-      to: [process.env.CONTACT_EMAIL],
+      from: process.env.SENDER,
+      to: ["awalhossainofficial@gmail.com"],
       subject: SUBJECT || "[No subject]",
       html: emailTemplate || "[No message]",
     },
